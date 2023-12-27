@@ -16,6 +16,9 @@ package org.casbin.jcasbin.main;
 
 import org.junit.Test;
 
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+
 import static org.casbin.jcasbin.main.TestUtil.testDomainEnforce;
 
 public class GroupRoleManagerTest {
@@ -24,5 +27,16 @@ public class GroupRoleManagerTest {
         Enforcer e = new Enforcer("examples/group_with_domain_model.conf", "examples/group_with_domain_policy.csv");
         testDomainEnforce(e, "alice", "domain1", "data1", "read", false);
     }
+
+
+    @Test
+    public void testGroupRoleManager2() {
+        Enforcer e = new Enforcer("examples/group_with_domain_model.conf", "examples/group_with_domain_policy.csv");
+        testDomainEnforce(e, "alice", "domain1", "data1", "read", false);
+        String s = "hello";
+        byte[] bytes = s.getBytes();
+        System.out.println(Arrays.toString("hello".getBytes(StandardCharsets.UTF_8)));
+    }
+
 
 }
